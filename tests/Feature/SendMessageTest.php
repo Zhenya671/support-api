@@ -23,7 +23,7 @@ class SendMessageTest extends TestCase
             ['ticket-view']
         );
 
-        $response = $this->post('/api/support/ticket/669/response', [
+        $response = $this->post('/api/support/ticket/1/response', [
             'message' => 'qwertyqwerty',
         ]);
 
