@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,9 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\User::factory(10)->create();
+         User::factory(1)->create([
+             'role_id' => 1
+         ]);
 
-         Ticket::factory(10000)->create([
+         User::factory(10)->create();
+
+         Ticket::factory(10)->create([
              'user_id' => 2
          ]);
     }

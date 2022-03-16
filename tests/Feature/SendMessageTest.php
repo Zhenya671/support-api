@@ -32,8 +32,23 @@ class SendMessageTest extends TestCase
 //        });
 
         $response->assertCreated();
+    }
+    public function test_send_message_from_user()
+    {
+        $user = User::factory()->create([
+            'role_id' => 1
+        ]);
+        $user->createToken('dev-access', ['ticket-view']);
 
+        Sanctum::actingAs(
+            $user,
+            ['ticket-view']
+        );
 
+        $response = $this->post('/api/ticket/1/request', [
+            'message' => 'qwertyqwerty',
+        ]);
 
+        $response->assertCreated();
     }
 }

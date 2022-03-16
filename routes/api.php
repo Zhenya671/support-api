@@ -14,10 +14,7 @@ Route::middleware(['auth:sanctum'])
             ->only([
                 'index', 'show', 'store',
             ]);
-        Route::prefix('ticket/{id}/request')
-            ->group(function () {
-                Route::post('/', [UserRequestController::class, 'sendMessage']);
-            });
+        Route::post('ticket/{id}/request', [UserRequestController::class, 'sendMessage']);
         Route::middleware('support.permission')
             ->prefix('/support')
             ->group(function () {
